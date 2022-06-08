@@ -161,10 +161,7 @@ public class SinglyLinkedList<T> {
         	removeFirst();
         //=== Si fuera igual a 2 ===
         }else if(position==2){
-        	Node<T> cur = first.getNext();
-        	for (int i = 0; i <= 2; i++) {
-				cur = cur.getNext();
-			}
+        	Node<T> cur = first.getNext().getNext();
         	first.setNext(cur);
         	size--;
         //=== Si fuera mayor o igual al tamaño de la lista ===
