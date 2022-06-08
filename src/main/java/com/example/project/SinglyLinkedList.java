@@ -107,7 +107,7 @@ public class SinglyLinkedList<T> {
         	int aux = 0;
         	Node<T> cur = first;
         	Node<T> cur1 = first;
-        	for (int i = 1; i < size; i++){
+        	for (int i = 0; i < size; i++){
         		aux++;
         		cur1 = cur1.getNext();
         		if (cur.equals(cur1)){
@@ -138,11 +138,11 @@ public class SinglyLinkedList<T> {
         //=== Si ninguna de las condiciones anteriores se haya cumplido ===
         }else{
             Node<T> cur1 = first;
-            for (int i = 1; i <= (position-1); i++) {
+            for (int i = 0; i <= (position-1); i++) {
 				cur1 = cur1.getNext();
 			}
             Node<T> cur2 = first;
-            for (int i = 1; i <= (position-2); i++) {
+            for (int i = 0; i <= (position-2); i++) {
 				cur2 = cur2.getNext();
 			}
             cur2.setNext(newNode);
@@ -170,11 +170,11 @@ public class SinglyLinkedList<T> {
         //=== Si ninguna de las condiciones anteriores se haya cumplido ===
         }else{
             Node<T> cur1 = first;
-            for (int i = 1; i <= position; i++) {
+            for (int i = 0; i <= position; i++) {
 				cur1 = cur1.getNext();
 			}
             Node<T> cur2 = first;
-            for (int i = 1; i <= (position-2); i++) {
+            for (int i = 0; i <= (position-2); i++) {
 				cur2 = cur2.getNext();
 			}
             cur2.setNext(cur1);
