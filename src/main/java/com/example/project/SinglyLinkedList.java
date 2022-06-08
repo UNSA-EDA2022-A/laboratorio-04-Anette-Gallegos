@@ -99,24 +99,89 @@ public class SinglyLinkedList<T> {
     // NUEVOS METODOS
 
     // Elimina aquellos nodos de la lista que esten duplicados
-    public void deleteDuplicates() {
-
+    public void deleteDuplicates(){
+        if (isEmpty() || (size == 1)) {
+            return;
+        }else{
+        	int aux = 0;
+        	Node<T> cur = first;
+        	Node<T> cur1 = first;
+        	for (int i = 1; i <= size; i++){
+        		cur1 = cur1.getNext();
+        		for (int j = size; j >= 0; j--){
+            		if (cur.equals(cur1)){
+            			deleteNth(i+aux);
+    				}
+            		aux++;
+				}
+        	}
+        }
     }
 
     // Inserta un nuevo nodo en una posicion especifica de la lista
-    public void insertNth(T data, int position) {
-
+    public void insertNth(T data, int position){
+    	Node<T> newNode = new Node<T>(data, null);
+    	if (position <= 0){
+        	addFirst(data);
+        }else if (position == 1){
+        	Node<T> cur = first.getNext();
+        	first.setNext(newNode);
+        	newNode.setNext(cur);
+        	size++;
+        }else if(position==2){
+        	Node<T> cur = first.getNext().getNext();
+        	first.getNext().setNext(newNode);
+        	newNode.setNext(cur);
+        	size++;
+        }else if(size <= position){
+        	addLast(data);
+        }else{
+            Node<T> cur1 = first;
+            for (int i = 0; i <= (position-1); i++) {
+				cur1 = cur1.getNext();
+			}
+            Node<T> cur2 = first;
+            for (int i = 0; i <= (position-2); i++) {
+				cur2 = cur2.getNext();
+			}
+            cur2.setNext(newNode);
+            newNode.setNext(cur1);
+            size++;
+        }
     }
 
     // Elimina el nodo de una posicion especifica de la lista
     public void deleteNth(int position) {
-
+    	if (position <= 0){
+        	removeFirst();
+        }else if (position == 1){
+        	Node<T> cur = first.getNext().getNext();
+        	first.setNext(cur);
+        	size--;
+        }else if(position==2){
+        	Node<T> cur = first.getNext().getNext().getNext();
+        	first.getNext().setNext(cur);
+        	size--;
+        }else if(size <= position){
+        	removeLast();
+        }else{
+            Node<T> cur1 = first;
+            for (int i = 0; i <= position; i++) {
+				cur1 = cur1.getNext();
+			}
+            Node<T> cur2 = first;
+            for (int i = 0; i <= (position-2); i++) {
+				cur2 = cur2.getNext();
+			}
+            cur2.setNext(cur1);
+            size--;
+        }
     }
 
     public static void main(final String[] args) {
 
-        // testExercicio1();
-        // testExercicio2();
+        testExercicio1();
+        testExercicio2();
         testExercicio3();       
 
     }
