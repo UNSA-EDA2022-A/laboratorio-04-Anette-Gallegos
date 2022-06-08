@@ -100,7 +100,6 @@ public class SinglyLinkedList<T> {
 
     // Elimina aquellos nodos de la lista que esten duplicados
     public void deleteDuplicates(){
-    	//Si el arreglo está vacío o solo hay un elemento, no hará nada
         if (isEmpty() || (size == 1)) {
             return;
         }else{
@@ -120,25 +119,20 @@ public class SinglyLinkedList<T> {
     // Inserta un nuevo nodo en una posicion especifica de la lista
     public void insertNth(T data, int position){
     	Node<T> newNode = new Node<T>(data, null);
-        //=== Si la posición fuera menor o igual a 0 ===
     	if (position <= 0){
         	addFirst(data);
-        //=== Si fuera igual a 1 ===
         }else if (position == 1){
         	Node<T> cur = first.getNext();
         	first.setNext(newNode);
         	newNode.setNext(cur);
         	size++;
-        //=== Si fuera igual a 2 ===
         }else if(position==2){
         	Node<T> cur = first.getNext().getNext();
         	first.getNext().setNext(newNode);
         	newNode.setNext(cur);
         	size++;
-        //=== Si fuera mayor o igual al tamaño de la lista ===
         }else if(size <= position){
         	addLast(data);
-        //=== Si ninguna de las condiciones anteriores se haya cumplido ===
         }else{
             Node<T> cur1 = first;
             for (int i = 0; i <= (position-1); i++) {
@@ -156,24 +150,19 @@ public class SinglyLinkedList<T> {
 
     // Elimina el nodo de una posicion especifica de la lista
     public void deleteNth(int position) {
-        //=== Si la posición fuera menor o igual a 0 ===
     	if (position <= 0){
         	removeFirst()
-        //=== Si fuera igual a 1 ===
         }else if (position == 1){
         	Node<T> cur = first.getNext().getNext();
         	first.setNext(cur);
         	size--;
-        //=== Si fuera igual a 2 ===
         }else if(position==2){
         	Node<T> cur = first.getNext().getNext().getNext();
         	first.getNext().setNext(cur);
         	size--;
-        //=== Si fuera mayor o igual al tamaño de la lista ===
         }else if(size <= position){
         	removeLast();
-        //=== Si ninguna de las condiciones anteriores se haya cumplido ===
-        }else{
+¿        }else{
             Node<T> cur1 = first;
             for (int i = 0; i <= position; i++) {
 				cur1 = cur1.getNext();
