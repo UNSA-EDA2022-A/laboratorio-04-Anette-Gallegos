@@ -104,13 +104,71 @@ public class SinglyLinkedList<T> {
     }
 
     // Inserta un nuevo nodo en una posicion especifica de la lista
-    public void insertNth(T data, int position) {
-
+    public void insertNth(T data, int position){
+    	Node<T> newNode = new Node<T>(data, null);
+        //=== Si la posición fuera menor o igual a 0 ===
+    	if (position <= 0){
+        	first = newNode;
+        //=== Si fuera igual a 1 ===
+        }else if (position == 1){
+        	addFirst(data);
+        //=== Si fuera igual a 2 ===
+        }else if(position==2){
+        	Node<T> cur = first.getNext();
+        	first.setNext(newNode);
+        	newNode.setNext(cur);
+        	size++;
+        //=== Si fuera mayor o igual al tamaño de la lista ===
+        }else if(size <= position){
+        	addLast(data);
+        //=== Si ninguna de las condiciones anteriores se haya cumplido ===
+        }else{
+            Node<T> cur1 = first;
+            for (int i = 0; i <= (position-1); i++) {
+				cur1 = cur1.getNext();
+			}
+            Node<T> cur2 = first;
+            for (int i = 0; i <= (position-2); i++) {
+				cur2 = cur2.getNext();
+			}
+            cur2.setNext(newNode);
+            newNode.setNext(cur1);
+            size++;
+        }
     }
 
     // Elimina el nodo de una posicion especifica de la lista
     public void deleteNth(int position) {
-
+        //=== Si la posición fuera menor o igual a 0 no hará nada ===
+    	if (position <= 0){
+        	return;
+        //=== Si fuera igual a 1 ===
+        }else if (position == 1){
+        	removeFirst();
+        //=== Si fuera igual a 2 ===
+        }else if(position==2){
+        	Node<T> cur = first.getNext();
+        	for (int i = 0; i <= 2; i++) {
+				cur = cur.getNext();
+			}
+        	first.setNext(cur);
+        	size--;
+        //=== Si fuera mayor o igual al tamaño de la lista ===
+        }else if(size <= position){
+        	removeLast();
+        //=== Si ninguna de las condiciones anteriores se haya cumplido ===
+        }else{
+            Node<T> cur1 = first;
+            for (int i = 0; i <= position; i++) {
+				cur1 = cur1.getNext();
+			}
+            Node<T> cur2 = first;
+            for (int i = 0; i <= (position-2); i++) {
+				cur2 = cur2.getNext();
+			}
+            cur2.setNext(cur1);
+            size--;
+        }
     }
 
     public static void main(final String[] args) {
