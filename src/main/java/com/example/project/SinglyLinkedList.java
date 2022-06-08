@@ -128,8 +128,8 @@ public class SinglyLinkedList<T> {
         	addFirst(data);
         //=== Si fuera igual a 2 ===
         }else if(position==2){
-        	Node<T> cur = first.getNext();
-        	first.setNext(newNode);
+        	Node<T> cur = first.getNext().getNext();
+        	first.getNext().setNext(newNode);
         	newNode.setNext(cur);
         	size++;
         //=== Si fuera mayor o igual al tamaño de la lista ===
@@ -161,8 +161,8 @@ public class SinglyLinkedList<T> {
         	removeFirst();
         //=== Si fuera igual a 2 ===
         }else if(position==2){
-        	Node<T> cur = first.getNext().getNext();
-        	first.setNext(cur);
+        	Node<T> cur = first.getNext().getNext().getNext();
+        	first.getNext().setNext(cur);
         	size--;
         //=== Si fuera mayor o igual al tamaño de la lista ===
         }else if(size <= position){
