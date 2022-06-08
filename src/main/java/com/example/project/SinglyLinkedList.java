@@ -162,7 +162,7 @@ public class SinglyLinkedList<T> {
         	size--;
         }else if(size <= position){
         	removeLast();
-¿        }else{
+        }else{
             Node<T> cur1 = first;
             for (int i = 0; i <= position; i++) {
 				cur1 = cur1.getNext();
