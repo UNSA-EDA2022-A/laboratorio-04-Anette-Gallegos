@@ -151,7 +151,7 @@ public class SinglyLinkedList<T> {
     // Elimina el nodo de una posicion especifica de la lista
     public void deleteNth(int position) {
     	if (position <= 0){
-        	removeFirst():
+        	removeFirst();
         }else if (position == 1){
         	Node<T> cur = first.getNext().getNext();
         	first.setNext(cur);
