@@ -122,10 +122,13 @@ public class SinglyLinkedList<T> {
     	Node<T> newNode = new Node<T>(data, null);
         //=== Si la posición fuera menor o igual a 0 ===
     	if (position <= 0){
-        	first = newNode;
+        	addFirst(data);
         //=== Si fuera igual a 1 ===
         }else if (position == 1){
-        	addFirst(data);
+        	Node<T> cur = first.getNext();
+        	first.setNext(newNode);
+        	newNode.setNext(cur);
+        	size++;
         //=== Si fuera igual a 2 ===
         }else if(position==2){
         	Node<T> cur = first.getNext().getNext();
@@ -153,12 +156,14 @@ public class SinglyLinkedList<T> {
 
     // Elimina el nodo de una posicion especifica de la lista
     public void deleteNth(int position) {
-        //=== Si la posición fuera menor o igual a 0 no hará nada ===
+        //=== Si la posición fuera menor o igual a 0 ===
     	if (position <= 0){
-        	return;
+        	removeFirst()
         //=== Si fuera igual a 1 ===
         }else if (position == 1){
-        	removeFirst();
+        	Node<T> cur = first.getNext().getNext();
+        	first.setNext(cur);
+        	size--;
         //=== Si fuera igual a 2 ===
         }else if(position==2){
         	Node<T> cur = first.getNext().getNext().getNext();
