@@ -99,8 +99,22 @@ public class SinglyLinkedList<T> {
     // NUEVOS METODOS
 
     // Elimina aquellos nodos de la lista que esten duplicados
-    public void deleteDuplicates() {
-
+    public void deleteDuplicates(){
+    	//Si el arreglo está vacío o solo hay un elemento, no hará nada
+        if (isEmpty() || (size == 1)) {
+            return;
+        }else{
+        	int aux = 0;
+        	Node<T> cur = first;
+        	Node<T> cur1 = first;
+        	for (int i = 0; i < size; i++){
+        		aux++;
+        		cur1 = cur1.getNext();
+        		if (cur.equals(cur1)){
+        			deleteNth(i+aux);
+				}
+        	}
+        }
     }
 
     // Inserta un nuevo nodo en una posicion especifica de la lista
@@ -173,8 +187,8 @@ public class SinglyLinkedList<T> {
 
     public static void main(final String[] args) {
 
-        // testExercicio1();
-        // testExercicio2();
+        testExercicio1();
+        testExercicio2();
         testExercicio3();       
 
     }
