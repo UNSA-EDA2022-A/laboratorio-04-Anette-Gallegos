@@ -106,11 +106,13 @@ public class SinglyLinkedList<T> {
         	int aux = 0;
         	Node<T> cur = first;
         	Node<T> cur1 = first;
-        	for (int i = 0; i < size; i++){
-        		aux++;
+        	for (int i = 1; i <= size; i++){
         		cur1 = cur1.getNext();
-        		if (cur.equals(cur1)){
-        			deleteNth(i+aux);
+        		for (int j = size; j >= 0; j--){
+            		if (cur.equals(cur1)){
+            			deleteNth(i+aux);
+    				}
+            		aux++;
 				}
         	}
         }
